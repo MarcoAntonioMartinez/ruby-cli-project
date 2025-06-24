@@ -1,6 +1,6 @@
-# ruby-template
+# ruby-cli-project
 
-Use this template to create new Ruby projects.
+CLI project which calculated distance between two end points
 
 - Ruby version: `3.2.1`
 
