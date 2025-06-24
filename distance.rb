@@ -1,63 +1,65 @@
+# global hash has key like 11 = City A, City D, 12 City A, City E, etc.
+# value is random distance btw cities
+$distance_hash = { "11" => rand(50), "12" => rand(50), "13" => rand(50), "21" => rand(50), "22" => rand(50), "23" => rand(50), "31" => rand(50), "32" => rand(50), "33" => rand(50) }
+
+
 class Distance
   attr_accessor :start_pt
   attr_accessor :end_pt
 
-  def initialize
+  #initializes object with starting city and destination city
+  def initialize(start_pt, end_pt)
     @start_pt = start_pt
     @end_pt = end_pt
   end
 
-  def distance_calc()
-    puts "#{@start_pt}"
-    puts "#{@end_pt}"
-
+  # takes the key which represents starting point and ending point and calculates distance between the 2
+  #  by looking up in distance hash
+  def distance_calc(key)
+    puts "To go from #{@start_pt} to #{@end_pt} it will take you #{$distance_hash[key]} miles."
   end
 end
 
-
-pp "Choose your starting point 1. City A 2. City B 3. City C"
-s_input = gets.chomp
-
-pp s_input
-
+ 
 starting_pt = ""
 
-pp "Choose your destination 1. City D 2. City E 3. City F"
-d_input = gets.chomp
+# prompt user for starting city
+start_city = { "1"=>"City A", "2"=>"City B", "3"=>"City C"}
+puts "\nChoose your starting point: "
+puts "\t1. City A" 
+puts "\t2. City B" 
+puts "\t3. City C"
 
-pp d_input
+# while there is input, check if user selected from list
+while s_input = gets.chomp
+  if s_input.to_i.between?(1,3)
+    starting_pt = start_city[s_input]
+    break
+  else
+    puts "Please enter an option from the list"
+  end
+end
 
 destination = ""
 
-
-case s_input
-when "1"
-  starting_pt = "City A"
-when "2"
-  starting_pt = "City B"
-when "3"
-  starting_pt = "City C"
-else
-  pp "You gave me #{s_input} -- I have no idea what to do with that."
+end_city = { "1"=>"City D", "2"=>"City E", "3"=>"City F"}
+puts "\nChoose your destination: "
+puts "\t1. City D"
+puts "\t2. City E"
+puts "\t3. City F"
+while d_input = gets.chomp
+  if d_input.to_i.between?(1,3)
+    destination = end_city[d_input]
+    break
+  else
+    puts "Please enter an option from the list"
+  end
 end
 
-case d_input
-when "1"
-  destination = "City D"
-when "2"
-  destination = "City E"
-when "3"
-  destination = "City F"
-else
-  pp "You gave me #{d_input} -- I have no idea what to do with that."
-end
-pp "#{s_input} #{d_input} "
-pp starting_pt 
+# create hash key used for distance lookup
+dist_key = s_input + d_input
 
-pp destination
 
-dist = Distance.new
-dist.start_pt = starting_pt
-dist.end_pt = destination
-dist.distance_calc
-#could just change cases to just hash make two hashes for the start and ends
+dist = Distance.new(starting_pt, destination)
+
+dist.distance_calc(dist_key)
