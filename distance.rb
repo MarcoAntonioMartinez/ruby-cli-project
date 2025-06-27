@@ -1,4 +1,4 @@
-# global hash has key like 11 = City A, City D, 12 City A, City E, etc.
+# global hash has key like 11 = City A, City D; 12 City A, City E; etc.
 # value is random distance btw cities
 $distance_hash = { "11" => 10, "12" => 28, "13" => 32, "21" => 28, "22" => 14, "23" => 11, "31" => 32, "32" => 11, "33" => 21 }
 
