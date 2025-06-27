@@ -1,6 +1,6 @@
 # global hash has key like 11 = City A, City D, 12 City A, City E, etc.
 # value is random distance btw cities
-$distance_hash = { "11" => rand(50), "12" => rand(50), "13" => rand(50), "21" => rand(50), "22" => rand(50), "23" => rand(50), "31" => rand(50), "32" => rand(50), "33" => rand(50) }
+$distance_hash = { "11" => 10, "12" => 28, "13" => 32, "21" => 28, "22" => 14, "23" => 11, "31" => 32, "32" => 11, "33" => 21 }
 
 
 class Distance
@@ -16,7 +16,7 @@ class Distance
   # takes the key which represents starting point and ending point and calculates distance between the 2
   #  by looking up in distance hash
   def distance_calc(key)
-    puts "To go from #{@start_pt} to #{@end_pt} it will take you #{$distance_hash[key]} miles."
+    pp "To go from #{@start_pt} to #{@end_pt} it will take you #{$distance_hash[key]} miles."
   end
 end
 
