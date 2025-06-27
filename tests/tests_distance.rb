@@ -1,15 +1,13 @@
 require "minitest/autorun"
 require "./distance"
 
-class TestCalculator < Minitest::Test
-  def test_addition
-    calculator = Calculator.new
-    assert_equal 4, calculator.add(2, 2), "Addition method failed"
+class TestDistance < Minitest::Test
+  def test_distance_calc
+    dist_calc = Distance.new("City A", "City E")
+    
+    assert_equal "To go from City A to City E it will take you #{rand(50)} miles." , dist_calc.distance_calc("12"), "Distance calculator method failed"
     #so condition testing, funtion we are testing, and error message for when it fails
   end
 
-  def test_subtraction
-    calculator = Calculator.new
-    assert_equal 4, calculator.subtract(6, 2), "Subtraction method failed"
-end
+
 end
